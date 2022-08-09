@@ -36,7 +36,7 @@ const CrudDemo = () => {
                         <th>Id</th>
                         <th>Name</th>
                         <th>Genre</th>
-                        <th>IMDB</th>
+                        <th>Director</th>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -87,9 +87,8 @@ const CrudDemo = () => {
                             <td>{movie.id}</td>
                             <td>{movie.Name} </td>
                             <td>{movie.Genre}</td>
-                            <td>{movie.IMDB}</td>
+                            <td>{movie.Director}</td>
                             <td>{movie.Price}</td>
-                            <td><TableAction id={movie.id} /></td>
                         </tr>
                     ))   
                 }                     
@@ -147,10 +146,15 @@ const CrudDemo = () => {
                     </div>
                     <div className="row mb-3">
                         <div className="col">
-                            <input type="text" className="form-control" {...register("IMDB")} placeholder="Enter IMDB" />
+                            <input type="text" className="form-control" {...register("Director")} placeholder="Enter Director" />
                         </div>
                     </div>  
-                    <button type="submit" className="btn btn-dark">Add</button>
+                    <div className="row mb-3">
+                        <div className="col">
+                            <input type="text" className="form-control" {...register("Price")} placeholder="Enter Price" />
+                        </div>
+                    </div>  
+                    <button type="submit" className="btn btn-dark" onClick={()=> saveMovie() }>Add</button>
                     
                     <button type="button" className="btn btn-dark m-2" onClick={()=> reset() }>Reset</button>
                 </form>
