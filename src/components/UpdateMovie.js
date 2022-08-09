@@ -26,7 +26,7 @@ const UpdateMovie = () => {
                     setMessage({value: 'API err: '+ res.status, type: 'danger'})
                 }
             });
-        },[] );
+         },[] );
     
         const Form = () => {
     
