@@ -5,7 +5,7 @@ import HookService from '../service/HookService';
 
 
 const CrudDemo = () => {
-    const [Movies,setMovies] = useState([]);
+    const [movies,setMovies] = useState([]);
     const [message, setMessage] = useState({value: '', type: ''});
     const [reload, setReload] = useState(false);
     //const [id,useId]= setState(0);
@@ -15,7 +15,6 @@ const CrudDemo = () => {
         // Send get request to API
         const hookService = new HookService();
         hookService.findAll().then((res)=>{
-            console.log("hello happy hackers",res);
             if(res.status === 200){
                 setMovies(res.data);
                 setMessage({value: 'Operation find all.. Done!', type: 'success'});

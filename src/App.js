@@ -1,15 +1,14 @@
 import './App.css';
+import DemoRouter from './components/DemoRouter';
 
 function App() {
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <p>
-          WelCome to the Movie Web Shop!
-        </p>
-        
-      </header>
+     <DemoRouter/>
+     <h2>Welcome to the movie webshop!</h2>
     </div>
+    </>
   );
 }
 
