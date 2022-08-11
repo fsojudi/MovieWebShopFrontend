@@ -7,7 +7,7 @@ import HookService from '../service/HookService';
 
 const MovieDetails = () => {
     const params = useParams();
-    const [movie, setMovie] = useState({id: 0, Name: '', Genre: '', IMDB: '',Price: ''});
+    const [movie, setMovie] = useState({id: 0, Name: '', Email: '', Title: ''});
     const [setMessage] = useState({value: '', type: ''});
     const history = useNavigate();
     
@@ -34,10 +34,10 @@ const MovieDetails = () => {
                      Movie Details
                 </div>
                 <div className="card-bodys">
-                    <h5 className="card-title bg-dark">Genre : { movie.Genre}</h5>
+                    <h5 className="card-title bg-dark">Email : { movie.Email}</h5>
                     <p className="card text bg-dark "> ID :  { movie.id}</p>
                     <p className="card text bg-dark "> Name :  { movie.Name}</p>
-                    <p className="card text bg-dark "> IMDB :  { movie.IMDB}</p>
+                    <p className="card text bg-dark "> Title :  { movie.Title}</p>
                     
                 </div>
                 <div className="card-footer">

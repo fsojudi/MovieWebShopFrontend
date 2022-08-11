@@ -8,7 +8,7 @@ import HookService from '../service/HookService';
 const UpdateMovie = () => {
     // state
         const params = useParams();
-        const [movie, setMovie] = useState({id: 0, Name: '', Genre: '',IMDB: '', Price: ''});
+        const [movie, setMovie] = useState({id: 0, Name: '', Email: '',Title: ''});
         const [message, setMessage] = useState({value: '', type: ''});
         const history = useNavigate();
         const [reload, setReload] = useState(false);
@@ -58,7 +58,7 @@ const UpdateMovie = () => {
                 
                 <> 
                     <h2>Update movie</h2> 
-                    { movie.Name}  { movie.Genre}  { movie.IMDB}  {movie.Price} 
+                    { movie.Name}  { movie.Email}  { movie.Title}  
                     <form className="form-control m-2 p-3 bg-dark" onSubmit={handleSubmit(saveMovie)}>
                         <div className="row mb-3">
                             <div className="col-6">
@@ -66,21 +66,17 @@ const UpdateMovie = () => {
                                 {errors.Name && <span className="text-danger">Movie Name is Required!</span>}
                             </div>
                             <div className="col-6">
-                                <input type="text" className="form-control" {...register("Genre", {required: true})}placeholder="Genre" />
-                                {errors.Genre && <span className="text-danger">Genre is Required!</span>}
+                                <input type="text" className="form-control" {...register("Email", {required: true})}placeholder="Email" />
+                                {errors.Email && <span className="text-danger">Email is Required!</span>}
                             </div>
                         </div>
                         <div className="row mb-3">
                             <div className="col">
-                                <input type="text" className="form-control" {...register("IMDB", {required: true})}placeholder="IMDB" />
+                                <input type="text" className="form-control" {...register("Title", {required: true})}placeholder="Title" />
                                 
                             </div>
                         </div>
-                        <div className="row mb-3">
-                            <div className="col">
-                                <input type="text" className="form-control" {...register("Price")} placeholder="Enter Price" />
-                            </div>
-                        </div>
+                        
                         <button type="submit" className="btn btn-dark">Update</button>
     
                         <button type="button" className="btn btn-dark m-2" onClick={()=> reset() }>Reset</button>
