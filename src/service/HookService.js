@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://localhost:44343/"
+const baseURL = "https://localhost:44343/MovieApi"
 
 class HookService {
 
