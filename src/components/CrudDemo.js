@@ -8,7 +8,6 @@ const CrudDemo = () => {
     const [movies,setMovies] = useState([]);
     const [message, setMessage] = useState({value: '', type: ''});
     const [reload, setReload] = useState(false);
-    //const [id,useId]= setState(0);
 
     // useEffect 
     useEffect(()=>{
@@ -57,7 +56,7 @@ const CrudDemo = () => {
                 hookService.deleteMovieById(props.id).then(res => {
                     if(res.status === 202 ){
                         setMessage({value: 'Delete is Done! (id:' + props.id + ')', type: 'success'});
-                        // reload fetch all person
+                        
                         setReload(!reload);
                     }else {
                         setMessage({value: 'API Error: '+ res.status, type: 'danger'})
@@ -154,7 +153,7 @@ const CrudDemo = () => {
                             <input type="text" className="form-control" {...register("Price")} placeholder="Enter Price" />
                         </div>
                     </div>  
-                    <button type="submit" className="btn btn-dark" onClick={()=> saveMovie() }>Add</button>
+                    <button type="submit" className="btn btn-dark" >Add</button>
                     
                     <button type="button" className="btn btn-dark m-2" onClick={()=> reset() }>Reset</button>
                 </form>
