@@ -8,7 +8,7 @@ import HookService from '../service/HookService';
 const UpdateMovie = () => {
     // state
         const params = useParams();
-        const [movie, setMovie] = useState({id: 0, Name: '', Email: '',Title: ''});
+        const [movie, setMovie] = useState({id: 0, Name: '', Director: '',Price: ''});
         const [message, setMessage] = useState({value: '', type: ''});
         const history = useNavigate();
         const [reload, setReload] = useState(false);
@@ -58,7 +58,7 @@ const UpdateMovie = () => {
                 
                 <> 
                     <h2>Update movie</h2> 
-                    { movie.Name}  { movie.Email}  { movie.Title}  
+                    { movie.Name}  { movie.Director}  { movie.Price}  
                     <form className="form-control m-2 p-3 bg-dark" onSubmit={handleSubmit(saveMovie)}>
                         <div className="row mb-3">
                             <div className="col-6">
@@ -66,13 +66,13 @@ const UpdateMovie = () => {
                                 {errors.Name && <span className="text-danger">Movie Name is Required!</span>}
                             </div>
                             <div className="col-6">
-                                <input type="text" className="form-control" {...register("Email", {required: true})}placeholder="Email" />
-                                {errors.Email && <span className="text-danger">Email is Required!</span>}
+                                <input type="text" className="form-control" {...register("Director", {required: true})}placeholder="Director" />
+                                {errors.Director && <span className="text-danger">Director is Required!</span>}
                             </div>
                         </div>
                         <div className="row mb-3">
                             <div className="col">
-                                <input type="text" className="form-control" {...register("Title", {required: true})}placeholder="Title" />
+                                <input type="text" className="form-control" {...register("Price", {required: true})}placeholder="Price" />
                                 
                             </div>
                         </div>
