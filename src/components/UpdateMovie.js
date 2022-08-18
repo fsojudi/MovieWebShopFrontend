@@ -8,7 +8,7 @@ import HookService from '../service/HookService';
 const UpdateMovie = () => {
     // state
         const params = useParams();
-        const [movie, setMovie] = useState({id: 0, Name: '', Director: '',Price: ''});
+        const [movie, setMovie] = useState({id: 0, Name: '', Genre: '', DirectorName: '', DirectorId: '', CountryName: '', CountryId: '', Price: ''});
         const [message, setMessage] = useState({value: '', type: ''});
         const history = useNavigate();
         const [reload, setReload] = useState(false);
@@ -58,7 +58,7 @@ const UpdateMovie = () => {
                 
                 <> 
                     <h2>Update movie</h2> 
-                    { movie.Name}  { movie.Director}  { movie.Price}  
+                    { movie.Name} { movie.Genre} { movie.DirectorName} { movie.DirectorId} { movie.CountryName} { movie.CountryId} { movie.Price}  
                     <form className="form-control m-2 p-3 bg-dark" onSubmit={handleSubmit(saveMovie)}>
                         <div className="row mb-3">
                             <div className="col-6">
@@ -66,16 +66,31 @@ const UpdateMovie = () => {
                                 {errors.Name && <span className="text-danger">Movie Name is Required!</span>}
                             </div>
                             <div className="col-6">
-                                <input type="text" className="form-control" {...register("Director", {required: true})}placeholder="Director" />
-                                {errors.Director && <span className="text-danger">Director is Required!</span>}
+                                <input type="text" className="form-control" {...register("Genre", {required: true})} placeholder="Genre" />
+                                {errors.Name && <span className="text-danger">Genre Required!</span>}
                             </div>
-                        </div>
-                        <div className="row mb-3">
-                            <div className="col">
+
+                            <div className="col-6">
+                                <input type="text" className="form-control" {...register("DirectorName", {required: true})}placeholder="Director's Name" />
+                                {errors.Director && <span className="text-danger">Director's Name is Required!</span>}
+                            </div>
+                            <div className="col-6">
+                                <input type="text" className="form-control" {...register("DirectorId", {required: true})}placeholder="Director Id" />
+                            </div>
+                            <div className="col-6">
+                                <input type="text" className="form-control" {...register("CountryName", {required: true})}placeholder="Country" />
+                                {errors.Director && <span className="text-danger">Country is Required!</span>}
+                            </div>
+                            <div className="col-6">
+                                <input type="text" className="form-control" {...register("DCountryId", {required: true})}placeholder="Country Id" />
+                            </div>
+                            <div className="col-6">
                                 <input type="text" className="form-control" {...register("Price", {required: true})}placeholder="Price" />
                                 
                             </div>
                         </div>
+                        
+                      
                         
                         <button type="submit" className="btn btn-dark">Update</button>
     

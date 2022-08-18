@@ -5,7 +5,7 @@ import HookService from '../service/HookService';
 
 
 const CrudDemo = () => {
-    const [movies,setMovies] = useState([]);
+    const [movie,setMovie] = useState([]);
     const [message, setMessage] = useState({value: '', type: ''});
     const [reload, setReload] = useState(false);
 
@@ -15,7 +15,7 @@ const CrudDemo = () => {
         const hookService = new HookService();
         hookService.findAll().then((res)=>{
             if(res.status === 200){
-                setMovies(res.data);
+                setMovie(res.data);
                 setMessage({value: 'Operation find all.. Done!', type: 'success'});
             } else {
                 // display error message
@@ -35,7 +35,10 @@ const CrudDemo = () => {
                         <th>Id</th>
                         <th>Name</th>
                         <th>Genre</th>
-                        <th>Director</th>
+                        <th>DirectorName</th>
+                        <th>DirectorId</th>
+                        <th>CountryName</th>
+                        <th>CountryId</th>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -81,12 +84,14 @@ const CrudDemo = () => {
             return (
                 <tbody>
                 {
-                    movies.map( (movie)=> (
-                        <tr key={movie.id}>
-                            <td>{movie.id}</td>
-                            <td>{movie.Name} </td>
-                            <td>{movie.Genre}</td>
-                            <td>{movie.Director}</td>
+                    movie.map( (movie)=> (
+                        <tr key={movie.Id}>
+                            <td>{movie.name} </td>
+                            <td>{movie.genre}</td>
+                            <td>{movie.DirectorName}</td>
+                            <td>{movie.DirectorId}</td>
+                            <td>{movie.CountryName}</td>
+                            <td>{movie.CountryId}</td>
                             <td>{movie.Price}</td>
                         </tr>
                     ))   
@@ -132,25 +137,33 @@ const CrudDemo = () => {
                 <form className="form-control m-2 p-3 bg-dark" onSubmit={handleSubmit(saveMovie)}>
                     <div className="row mb-3">
                         <div className="col-6">
-                            <input type="text" className="form-control" {...register("Name", {required: true})} placeholder="Enter Movie Name" />
-                            {errors.Name && <span className="text-danger">Movie Name is Required!</span>}
+                            <input type="text" className="form-control" {...register("Name", {required: true})} placeholder="Enter Movie Name!" />
+                            {errors.Name && <span className="text-danger">Movie's Name is Required!</span>}
                         </div>
                         
                     </div>
                     <div className="row mb-3">
                         <div className="col">
-                            <input type="text" className="form-control" {...register("Genre", {required: true})} placeholder="Enter Genre" />
+                            <input type="text" className="form-control" {...register("Genre", {required: true})} placeholder="Enter Genre!" />
                             {errors.Genre && <span className="text-danger">Genre is Required!</span>}
                         </div>
                     </div>
                     <div className="row mb-3">
                         <div className="col">
-                            <input type="text" className="form-control" {...register("Director")} placeholder="Enter Director" />
+                            <input type="text" className="form-control" {...register("DirectorName")} placeholder="Enter Director's Name!" />
+                            {errors.Genre && <span className="text-danger">Director's Name is Required!</span>}
+                        </div>
+                    </div> 
+                    <div className="row mb-3">
+                        <div className="col">
+                            <input type="text" className="form-control" {...register("CountryName")} placeholder="Enter Country!" />
+                            {errors.Genre && <span className="text-danger">Country's Name is Required!</span>}
+
                         </div>
                     </div>  
                     <div className="row mb-3">
                         <div className="col">
-                            <input type="text" className="form-control" {...register("Price")} placeholder="Enter Price" />
+                            <input type="text" className="form-control" {...register("Price")} placeholder="Enter Price!" />
                         </div>
                     </div>  
                     <button type="submit" className="btn btn-dark" >Add</button>
